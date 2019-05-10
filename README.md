@@ -1,6 +1,10 @@
+## Demo
+
+[ver](https://pipe473.github.io/MoviesApp/)
+
 # AngularFilms
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.8.
+Proyecto didáctico con Angular 7, Servicios , API-Rest de terceros y  layout con grid y flex.
 
 ## Development server
 
