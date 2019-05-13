@@ -10,6 +10,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { ApiMoviesService } from './api-movies.service';
 import { HttpClientModule } from '@angular/common/http';
 import { MoviesDisplayComponent } from './movies-display/movies-display.component';
+import { MoviesSearchComponent } from './movies-search/movies-search.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { MoviesDisplayComponent } from './movies-display/movies-display.componen
     MovieDetailComponent,
     NavigationComponent,
     PageNotFoundComponent,
-    MoviesDisplayComponent
+    MoviesDisplayComponent,
+    MoviesSearchComponent
   ],
   imports: [
     BrowserModule,

@@ -14,7 +14,6 @@ id: string;
 typeSubscription: any;
 related: object[];
 
-
   constructor(
 
     private route: ActivatedRoute,

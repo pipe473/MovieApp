@@ -11,7 +11,8 @@ import { ApiMoviesService } from '../api-movies.service';
 export class MovieListComponent implements OnInit {
   type: string;
   typeSubscription: any;
-  movies: object[];
+  movies: object[] = [];
+  lastPagedLoaded= 0;
 
   // movie: object[];
   validTypes = ['top_rated', 'popular', 'upcoming'];
@@ -26,8 +27,12 @@ export class MovieListComponent implements OnInit {
     this.typeSubscription = this.route.params.subscribe(params => {
       this.type = params.type;
       if (this.validTypes.includes(params.type)) {
+        this.movies = [];
+        this.lastPagedLoaded = 0;
+        this.moreMovies();
         this.api.getMovies(this.type).subscribe((res: any)=> {
          this.movies= res.results;
+         this.lastPagedLoaded = res.page;
          console.log(res);
         });
 
@@ -35,6 +40,15 @@ export class MovieListComponent implements OnInit {
         this.router.navigate(['/movies/popular']);
       }
     })
+  }
+
+  moreMovies(reset = false){
+    this.api.getMovies(this.type, this.lastPagedLoaded + 1).subscribe((res: any)=> {
+          console.log(res);
+          this.movies = reset ? res.results : [...this.movies, ...res.results];
+          this.lastPagedLoaded = res.page;
+
+    });
   }
 
   ngOnDestroy() {
